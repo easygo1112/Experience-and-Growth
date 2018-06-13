@@ -1,0 +1,17 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+/*(-3,3)のランダム数を表示する。*/
+int main() {
+	int k,n;
+	double i,j;
+	n=50000;
+	j=10000;
+	k=2;
+	srand(time(NULL));
+	i = ((rand()%n)/j)-k;
+	printf("%4f",i);
+	return 0;
+}
+/* jは小数以下を表示するための割る数だが、float型あるいはdouble型でないとiはint型になってしまう*/
