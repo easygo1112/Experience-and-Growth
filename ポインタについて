@@ -1,0 +1,39 @@
+#include <stdio.h>
+
+void scale(int n, float x, float * o) {
+    int i;
+    for(i=0; i<n; i++) {
+        o[i] = x * o[i];
+    }
+}
+
+int main() {
+    int j;
+    float a[5] = {1, 2, 3, 4, 5};
+    scale(5, 2.5, a);
+    for(j=0; j<5; j++) {
+        printf("y[%d]=%f\n",j,a[j]);
+    }
+}
+/*これならうまくいく。ちなみに、関数内の引数をポインタにしていても、配列で難なく実行可能*/
+
+
+#include <stdio.h>
+
+void scale(int n, float x, float * o) {
+    int i;
+    for(i=0; i<n; i++) {
+        o[i] = x * o[i];
+    }
+}
+
+int main() {
+    int j;
+    float a[5] = {1, 2, 3, 4, 5};
+    float *y = a;
+    scale(5, 2.5, y);
+    for(j=0; j<5; j++) {
+        printf("y[%d]=%f\n",j,(y+j));
+    }
+}
+/*このとき、コンパイルはできるものの答えがおかしくなる。　scale関数のaを&aに変えてみたりはできない。*/
